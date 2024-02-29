@@ -1,0 +1,16 @@
+<%- include('./components/start') %>
+
+    <%- include('./components/navbar') %>
+
+    <link rel="stylesheet" href="/css/checkout.css">
+
+    <main class="checkoutCont">
+        <form action="/cart/order-now" method="post">
+            <input type="tel" name="phone" placeholder="Enter the Mobile Number"><br>
+            <input type="text" name="address" placeholder="Enter the address"><br>
+            <button>Order Now</button>
+        </form>
+    </main>
+
+
+<%- include('./components/end') %>

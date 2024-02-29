@@ -1,0 +1,35 @@
+<%- include('./components/start') %>
+
+    <%- include('./components/navbar') %>
+    <link rel="stylesheet" href="/css/orders.css">
+
+    <%- include('./components/adminNavbar') %>
+
+    <main class="ordersCont">
+        <div class="orderCont" style="margin-bottom: 2rem;">
+            <div class="idCont">
+                <h3>Order ID</h3>
+            </div>
+            <div class="usernameCont">
+                <h3>Username</h3>
+            </div>
+            <div class="amountCont">
+                <h3>Order Amount</h3>
+            </div>
+        </div>
+        <% for(let order of orders){ %>
+            <div class="orderCont">
+                <div class="idCont">
+                    <%= order.id %>
+                </div>
+                <div class="usernameCont">
+                    <%= order.user.username%>
+                </div>
+                <div class="amountCont">
+                    ₹<%= order.orderAmount %>
+                </div>
+            </div>
+        <% } %>
+    </main>
+
+<%- include('./components/end') %>

@@ -1,0 +1,41 @@
+.productDetailContainer{
+    width: 100vw;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.productDetailContainer .prodctImgCont{
+    width: 30%;
+}
+.productDetailContainer .detailsCont{
+    width: 50%;
+    padding-top: 3rem;
+}
+
+.productDetailContainer .prodctImgCont img{
+    width: 100%;
+}
+
+
+.productDetailContainer .detailsCont h3{
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}   
+
+.productDetailContainer .detailsCont p{
+    font-size: 1.4rem;
+}
+
+.productDetailContainer .detailsCont .productDesc{
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+
+.cardActions button{
+    width: 200px;
+}
