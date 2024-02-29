@@ -64,7 +64,7 @@ module.exports.postSignUp = async (req,res) => {
             req.session.isLoggedIn = true;
             req.session.user = user;
 
-            if(user.email === "asbhatiya8888@gmail.com"){
+            if(user.email === "admin@admin.com"){
                 req.session.isAdmin = true;
             }else{
                 req.session.isAdmin = false;
