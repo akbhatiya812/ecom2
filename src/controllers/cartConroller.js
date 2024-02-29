@@ -7,7 +7,7 @@ module.exports.addToCart = async (req,res) => {
     try{
         const {productId} = req.body;
         let qty = 1;
-        const user = await User.findById('65dedd125717cc946af949c5');
+        const user = await User.findById(req.user._id);
         
         const cartItemIndex = user.cart.items.findIndex(item => String(item.productId) === productId );
         if(cartItemIndex !== -1){
@@ -28,7 +28,7 @@ module.exports.getCartItems = async (req,res) => {
 
     try{
 
-        const user = await User.findById('65dedd125717cc946af949c5').populate('cart.items.productId');
+        const user = await User.findById(req.user._id).populate('cart.items.productId');
         let cartTotal = 0;
         const cart = user.cart.items.map( item => {
             cartTotal += item.qty*item.productId.price
@@ -58,7 +58,7 @@ module.exports.updateQty = async (req,res) => {
     try{
         
         const {productId,quantity} = req.body;
-        const user = await User.findById('65dedd125717cc946af949c5').populate('cart.items.productId', 'price');
+        const user = await User.findById(req.user._id).populate('cart.items.productId', 'price');
         let cartTotal = 0;
         user.cart.items.map(item => {
             if(item.productId.id === productId){
@@ -77,7 +77,7 @@ module.exports.updateQty = async (req,res) => {
 
 module.exports.removeItem = async (req,res) => {
     const id = req.params.productId;
-    const user = await User.findById('65dedd125717cc946af949c5');
+    const user = await User.findById(req.user._id);
 
     user.cart.items = user.cart.items.filter(item => String(item.productId) !== id);
 
@@ -89,7 +89,7 @@ module.exports.removeItem = async (req,res) => {
 module.exports.checkout = async (req,res) => {
     
     const userId = '65dedd125717cc946af949c5'
-    const user = await User.findById(userId);
+    const user = await User.findById(req.user._id);
 
     if(user.cart.items.length == 0){
         return res.redirect('back');
@@ -107,7 +107,7 @@ module.exports.orderNow = async (req,res) =>{
         const {address, phone} = req.body; 
         
         const userId = '65dedd125717cc946af949c5'
-        const user = await User.findById(userId).populate('cart.items.productId');
+        const user = await User.findById(req.user._id);
         
         const cartItems = user.cart.items.map(item => ({
             productId: item.productId,
