@@ -1,0 +1,21 @@
+/* Styles for admin navbar */
+
+.adminNavbar{
+    width: 100%;
+    padding: 2rem;
+}
+
+.adminNavbar ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.adminNavbar ul li{
+    margin: 0 2rem;
+    padding: 10px 20px;
+    background-color: rgb(76, 149, 192);
+    color: white;
+    border: none;
+    outline: none;
+}
