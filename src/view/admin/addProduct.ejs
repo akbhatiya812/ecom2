@@ -1,0 +1,41 @@
+<%- include('../components/start') %>
+
+    <%- include('../components/navbar') %>
+    <link rel="stylesheet" href="/css/addProduct.css">
+
+    <%- include('../components/adminNavbar') %>
+
+    <main class="addProductCont">
+       
+        <form action="/admin/addProduct" method="post">
+            <input type="text" name="title" id="title" placeholder="Enter the product title" required><br>
+            <input type="text" name="price" id="price" placeholder="Enter the price of the product" required><br>
+            <input type="text" name="desc" id="desc" placeholder="Enter the product description" required><br>
+            <input type="text" name="img" id="img" placeholder="Enter the url of product imgae" required><br>
+            <button type="submit">Add Product</button>
+        </form>
+
+        <div class="productsContainer">
+            <% for(let prod of products){ %>
+                <div class="productContainer">
+                    <div class="imgCont">
+                        <img src="<%= prod.img %>" alt="">
+                    </div>
+                    <div class="titleCont">
+                        <h4><%= prod.title %></h4>
+                    </div>
+                    <div class="priceCont">
+                        <p><%= prod.price %></p>
+                    </div>
+                    <div class="iconsCont">
+                        <span><a href="/admin/update-product/<%= prod.id %>"><ion-icon name="create-outline" class="icons"></ion-icon></a></span>
+                        <span><a href="/admin/delete-product/<%= prod.id %>"><ion-icon name="trash-outline" class="icons"></ion-icon></a></span>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        
+
+    </main>
+
+<%- include('../components/end') %>
