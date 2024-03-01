@@ -1,1 +1,3 @@
 # ecom
+
+use `npm start`
